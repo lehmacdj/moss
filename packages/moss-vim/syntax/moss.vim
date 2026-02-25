@@ -45,4 +45,4 @@ hi def link mossNamespace Include
 hi def link mossFunction Function
 hi def link mossOperator Operator
 
-let b:current_syntax = 'moss'
+let b:current_syntax = "moss"
