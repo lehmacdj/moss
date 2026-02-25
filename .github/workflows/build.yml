@@ -6,6 +6,16 @@ on:
       - main
 
 jobs:
+  lint-vim:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - run: pip install vim-vint
+      - uses: reviewdog/action-setup@v1
+      - run: vint packages/moss-vim/**/*.vim 2>&1 | reviewdog -efm="%f:%l:%c: %m" -reporter=github-pr-review
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ github.token }}
+
   x86_64-linux:
     runs-on: ubuntu-24.04
     steps:
